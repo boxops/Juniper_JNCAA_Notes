@@ -1,0 +1,6 @@
+[vmx_devices]
+vMX-1
+vMX-2
+
+[vmx_devices:vars]
+ntp_server = 192.168.0.100
