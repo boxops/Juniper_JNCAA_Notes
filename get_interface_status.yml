@@ -1,0 +1,28 @@
+---
+- name: Retrieve Interface Information
+  hosts: vmx_devices
+  roles:
+    - Juniper.junos
+  connection: local
+  gather_facts: no
+  
+  vars_prompt:
+    - name: USERNAME
+      prompt: Device Username
+      private: no
+    - name: DEVICE_PASSWORD
+      prompt: Device Password
+      private: yes
+  
+  tasks:
+    - name: Get Junos Device Interface Info
+      juniper_junos_command:
+        user: "{{ USERNAME }}"
+        passwd: "{{ DEVICE_PASSWORD }}"
+        commands:
+          - show interfaces ge-0/0/[01]* terse
+      register: cmd_output
+      
+    - name: Print Result
+      debug:
+        msg: "{{ cmd_output.stdout_lines }}"
