@@ -1,0 +1,28 @@
+---
+- name: Retrieve Junos Device Commited Configuration
+  hosts: vMX-1
+  roles:
+    - Juniper.junos
+  connection: local
+  gather_facts: no
+  
+  vars_prompt:
+  - name: USERNAME
+    prompt: Device Username
+    private: no
+  - name: DEVICE_PASSWORD
+    prompt: Device Password
+    private: yes
+    
+  tasks:
+    - name: Retrieve the commited configuration
+      juniper_junos_config:
+        user: "{{ USERNAME }}"
+        passwd: "{{ DEVICE_PASSWORD }}"
+        retrieve: commited
+        filter: interfaces
+      register: response
+      
+    - name: Print the commited config
+      debug:
+        var: response.config_lines
