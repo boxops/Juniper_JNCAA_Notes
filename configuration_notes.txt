@@ -1,34 +1,31 @@
-Juniper SRX
+### Juniper SRX ###
 
 
 Factory Reset Configuraton
 
-root@host# load factory-default
-root@host# set system root-authentication plain-text-password
-New password:
-Retype new password:
-root@host# commit and-quit
-root> request system reboot
-Reboot the system ? [yes,no] (no) yes
+load factory-default
+set system root-authentication plain-text-password
+commit and-quit
+request system reboot
 
 
 Configure SRX to Packet Mode from Flow Mode
 
-root@host# delete security 
-root@host# set security forwarding-options family mpls mode packet-based
-root@host# commit
-root@host> show security flow status
-root@host# run request system reboot
+delete security 
+set security forwarding-options family mpls mode packet-based
+commit
+show security flow status
+run request system reboot
 
 
 Configure Static IP on an Interface
 
-root@host# set interfaces et-4/0/0 unit 0 family inet address 10.1.1.1/24
+set interfaces et-4/0/0 unit 0 family inet address 10.1.1.1/24
 
 
 Configure DHCP IP on an Interface
 
-root@host# set interfaces et-4/0/0 unit 0 family inet dhcp
+set interfaces et-4/0/0 unit 0 family inet dhcp
 
 
 Configure OSPF
