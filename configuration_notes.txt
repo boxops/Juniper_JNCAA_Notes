@@ -32,7 +32,7 @@ Configure OSPF
 https://www.juniper.net/documentation/en_US/junos/topics/topic-map/ospf-configuring-interfaces.html
 
 set interfaces ge-0/2/0 unit 0 family inet address 10.0.0.1
-set protocols ospf area 0.0.0.1 interface ge-0/2/0
+set protocols ospf area 0 interface ge-0/2/0
 set security zones security-zone Trust host-inbound-traffic protocols all
 set security zones security-zone Trust host-inbound-traffic system-services all
 set groups global security policies default-policy permit-all
