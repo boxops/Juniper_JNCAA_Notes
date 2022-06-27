@@ -14,7 +14,7 @@ Configure SRX to Packet Mode from Flow Mode
 delete security 
 set security forwarding-options family mpls mode packet-based
 commit
-show security flow status
+run show security flow status
 run request system reboot
 
 
