@@ -29,3 +29,14 @@ root@host# set interfaces et-4/0/0 unit 0 family inet address 10.1.1.1/24
 Configure DHCP IP on an Interface
 
 root@host# set interfaces et-4/0/0 unit 0 family inet dhcp
+
+
+Configure OSPF
+
+set interfaces ge-0/2/0 unit 0 family inet address 10.0.0.1
+set protocols ospf area 0.0.0.1 interface ge-0/2/0
+set security zones security-zone Trust host-inbound-traffic protocols all
+set security zones security-zone Trust host-inbound-traffic system-services all
+set groups global security policies default-policy permit-all
+set security zones security-zone Trust interfaces ge-0/2/0
+
